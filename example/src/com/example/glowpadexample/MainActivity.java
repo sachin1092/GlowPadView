@@ -19,8 +19,13 @@ public class MainActivity extends Activity implements OnTriggerListener {
 
 		mGlowPadView = (GlowPadView) findViewById(R.id.glow_pad_view);
 
-		// mGlowPadView.setVibrateEnabled(true);
 		mGlowPadView.setOnTriggerListener(this);
+		
+		// uncomment this to make sure the glowpad doesn't vibrate on touch
+		// mGlowPadView.setVibrateEnabled(false);
+		
+		// uncomment this to hide targets
+		mGlowPadView.setShowTargetsOnIdle(true);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.animation.PropertyValuesHolder;
 import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-
+ 
 class Tweener {
     private static final String TAG = "Tweener";
 	private static final boolean DEBUG = false;

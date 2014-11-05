@@ -1,0 +1,13 @@
+.gradle
+local.properties
+.DS_Store
+signing.properties
+
+# build files
+build
+bin
+gen
+
+# IntelliJ
+*.iml
+.idea

@@ -22,7 +22,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;

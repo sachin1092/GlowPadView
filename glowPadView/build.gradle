@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     namespace 'com.fima.glowpadview'
@@ -17,3 +18,24 @@ android {
 }
 
 dependencies {}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            repositories.maven {
+                url 'https://maven.andob.info/repository/open_source/'
+                credentials {
+                    username "$System.env.MAVEN_PUBLISH_USERNAME"
+                    password "$System.env.MAVEN_PUBLISH_PASSWORD"
+                }
+            }
+
+            maven(MavenPublication) {
+                groupId 'com.fima.glowpadview'
+                artifactId 'glowpadview'
+                version '2.0.0'
+                artifact(bundleReleaseAar)
+            }
+        }
+    }
+}

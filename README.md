@@ -6,6 +6,22 @@ The GlowPadView library is basically Android's Lock Ring (way of screen-unlockin
 ![Example image](https://raw.githubusercontent.com/sachin1092/GlowPadView/master/example.png)
 
 
+Import it with
+----
+
+```
+repositories {
+    maven { url "https://maven.andob.info/repository/open_source" }
+}
+```
+
+```
+dependencies {
+    implementation 'com.fima.glowpadview:glowpadview:2.0.0'
+}
+```
+
+
 Copyright and Licensing
 ----
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import com.fima.glowpadview.GlowPadView;
 import com.fima.glowpadview.GlowPadView.OnTriggerListener;
 
@@ -17,7 +16,7 @@ public class MainActivity extends Activity implements OnTriggerListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mGlowPadView = (GlowPadView) findViewById(R.id.glow_pad_view);
+		mGlowPadView = findViewById(R.id.glow_pad_view);
 
 		mGlowPadView.setOnTriggerListener(this);
 		
@@ -30,7 +29,6 @@ public class MainActivity extends Activity implements OnTriggerListener {
 
 	@Override
 	public void onGrabbed(View v, int handle) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -59,15 +57,9 @@ public class MainActivity extends Activity implements OnTriggerListener {
 	}
 
 	@Override
-	public void onGrabbedStateChange(View v, int handle) {
-		// TODO Auto-generated method stub
-
-	}
+	public void onGrabbedStateChange(View v, int handle) {}
 
 	@Override
-	public void onFinishFinalAnimation() {
-		// TODO Auto-generated method stub
-
-	}
+	public void onFinishFinalAnimation() {}
 
 }

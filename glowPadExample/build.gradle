@@ -1,24 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.0.2"
-
+    namespace 'com.example.glowpadexample'
+    compileSdkVersion 32
     defaultConfig {
         applicationId "com.example.glowpadexample"
-        minSdkVersion 10
-        targetSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 32
     }
 
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+            minifyEnabled false
         }
     }
 }
 
 dependencies {
-    compile project(':glowPadView')
-    compile 'com.android.support:support-v4:18.0.0'
+    implementation project(':glowPadView')
 }

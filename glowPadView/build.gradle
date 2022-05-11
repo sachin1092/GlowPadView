@@ -1,24 +1,19 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.0.2"
-
+    namespace 'com.fima.glowpadview'
+    compileSdkVersion 32
     defaultConfig {
-        applicationId "com.fima.glowpadview"
-        minSdkVersion 10
-        targetSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 32
     }
 
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+            minifyEnabled false
         }
     }
 }
 
-dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
-    compile files('libs/nineoldandroids-2.4.0.jar')
-}
+dependencies {}

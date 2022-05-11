@@ -21,16 +21,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.util.Log;
 import android.view.animation.Interpolator;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.PropertyValuesHolder;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
- 
 class Tweener {
     private static final String TAG = "Tweener";
 	private static final boolean DEBUG = false;
@@ -59,8 +57,8 @@ class Tweener {
 
 	public static Tweener to(Object object, long duration, Object... vars) {
 		long delay = 0;
-		AnimatorUpdateListener updateListener = null;
-		AnimatorListener listener = null;
+		ValueAnimator.AnimatorUpdateListener updateListener = null;
+		Animator.AnimatorListener listener = null;
 		Interpolator interpolator = null;
 
 		// Iterate through arguments and discover properties to animate
@@ -79,10 +77,10 @@ class Tweener {
 			} else if ("ease".equals(key)) {
 				interpolator = (Interpolator) value; // TODO: multiple interpolators?
 			} else if ("onUpdate".equals(key) || "onUpdateListener".equals(key)) {
-				updateListener = (AnimatorUpdateListener) value;
+				updateListener = (ValueAnimator.AnimatorUpdateListener) value;
 			} else if ("onComplete".equals(key)
 					|| "onCompleteListener".equals(key)) {
-				listener = (AnimatorListener) value;
+				listener = (Animator.AnimatorListener) value;
 			} else if ("delay".equals(key)) {
 				delay = ((Number) value).longValue();
 			} else if ("syncWith".equals(key)) {
@@ -145,7 +143,7 @@ class Tweener {
 	}
 
 	// Listener to watch for completed animations and remove them.
-	private static AnimatorListener mCleanupListener = new AnimatorListenerAdapter() {
+	private static Animator.AnimatorListener mCleanupListener = new AnimatorListenerAdapter() {
 
 		@Override
 		public void onAnimationEnd(Animator animation) {

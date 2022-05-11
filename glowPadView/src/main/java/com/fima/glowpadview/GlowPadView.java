@@ -18,6 +18,9 @@ package com.fima.glowpadview;
 
 import java.util.ArrayList;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
@@ -39,12 +42,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 import android.view.animation.Interpolator;
-
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
 /**
  * This is a copy of com.android.internal.widget.multiwaveview.GlowPadView with
@@ -167,14 +164,14 @@ public class GlowPadView extends View {
 		}
 	};
 
-	private AnimatorListener mResetListener = new AnimatorListenerAdapter() {
+	private Animator.AnimatorListener mResetListener = new AnimatorListenerAdapter() {
 		public void onAnimationEnd(Animator animator) {
 			switchToState(STATE_IDLE, mWaveCenterX, mWaveCenterY);
 			dispatchOnFinishFinalAnimation();
 		}
 	};
 
-	private AnimatorListener mResetListenerWithPing = new AnimatorListenerAdapter() {
+	private Animator.AnimatorListener mResetListenerWithPing = new AnimatorListenerAdapter() {
 		public void onAnimationEnd(Animator animator) {
 			ping();
 			switchToState(STATE_IDLE, mWaveCenterX, mWaveCenterY);
@@ -182,14 +179,14 @@ public class GlowPadView extends View {
 		}
 	};
 
-	private AnimatorUpdateListener mUpdateListener = new AnimatorUpdateListener() {
+	private ValueAnimator.AnimatorUpdateListener mUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
 		public void onAnimationUpdate(ValueAnimator animation) {
 			invalidate();
 		}
 	};
 
 	private boolean mAnimatingTargets;
-	private AnimatorListener mTargetUpdateListener = new AnimatorListenerAdapter() {
+	private Animator.AnimatorListener mTargetUpdateListener = new AnimatorListenerAdapter() {
 		public void onAnimationEnd(Animator animator) {
 			if (mNewTargetResources != 0) {
 				internalSetTargetResources(mNewTargetResources);
@@ -425,7 +422,7 @@ public class GlowPadView extends View {
 	}
 
 	private void showGlow(int duration, int delay, float finalAlpha,
-			AnimatorListener finishListener) {
+			Animator.AnimatorListener finishListener) {
 		mGlowAnimations.cancel();
 		mGlowAnimations.add(Tweener.to(mPointCloud.glowManager, duration,
 				"ease", Ease.Cubic.easeIn, "delay", delay, "alpha", finalAlpha,
@@ -434,7 +431,7 @@ public class GlowPadView extends View {
 	}
 
 	private void hideGlow(int duration, int delay, float finalAlpha,
-			AnimatorListener finishListener) {
+			Animator.AnimatorListener finishListener) {
 		mGlowAnimations.cancel();
 		mGlowAnimations.add(Tweener.to(mPointCloud.glowManager, duration,
 				"ease", Ease.Quart.easeOut, "delay", delay, "alpha",

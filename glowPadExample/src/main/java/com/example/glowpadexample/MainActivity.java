@@ -41,19 +41,11 @@ public class MainActivity extends Activity implements OnTriggerListener {
 	@Override
 	public void onTrigger(View v, int target) {
 		final int resId = glowPadView.getResourceIdForTarget(target);
-		switch (resId) {
-		case R.drawable.ic_item_camera:
+		if (resId == R.drawable.ic_item_camera) {
 			Toast.makeText(this, "Camera selected", Toast.LENGTH_SHORT).show();
-			break;
-
-		case R.drawable.ic_item_google:
+		} else if (resId == R.drawable.ic_item_google) {
 			Toast.makeText(this, "Google selected", Toast.LENGTH_SHORT).show();
-
-			break;
-		default:
-			// Code should never reach here.
 		}
-
 	}
 
 	@Override

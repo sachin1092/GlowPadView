@@ -105,7 +105,7 @@ class Tweener {
 		ObjectAnimator anim = null;
 		if (tween == null) {
 			anim = ObjectAnimator.ofPropertyValuesHolder(object,
-					props.toArray(new PropertyValuesHolder[props.size()]));
+					props.toArray(new PropertyValuesHolder[0]));
 			tween = new Tweener(anim);
 			sTweens.put(object, tween);
 			if (DEBUG)
@@ -174,7 +174,7 @@ class Tweener {
 				tween.animator.cancel();
 				if (props != null) {
 					tween.animator.setValues(props
-							.toArray(new PropertyValuesHolder[props.size()]));
+							.toArray(new PropertyValuesHolder[0]));
 				} else {
 					sTweens.remove(tween);
 				}

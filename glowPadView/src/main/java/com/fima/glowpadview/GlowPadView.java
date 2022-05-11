@@ -361,9 +361,7 @@ public class GlowPadView extends View {
 		final int minimumHeight = getSuggestedMinimumHeight();
 		int computedWidth = resolveMeasured(widthMeasureSpec, minimumWidth);
 		int computedHeight = resolveMeasured(heightMeasureSpec, minimumHeight);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-			computeInsets((computedWidth - minimumWidth),
-					(computedHeight - minimumHeight));
+		computeInsets((computedWidth - minimumWidth), (computedHeight - minimumHeight));
 		setMeasuredDimension(computedWidth, computedHeight);
 	}
 
@@ -785,6 +783,7 @@ public class GlowPadView extends View {
 	}
 
 	@Override
+	@SuppressLint("ClickableViewAccessibility")
 	public boolean onTouchEvent(MotionEvent event) {
 		final int action = event.getActionMasked();
 		boolean handled = false;
@@ -1040,7 +1039,6 @@ public class GlowPadView extends View {
 		}
 	}
 
-	@TargetApi(17)
 	private void computeInsets(int dx, int dy) {
 		final int layoutDirection = getLayoutDirection();
 		final int absoluteGravity = Gravity.getAbsoluteGravity(mGravity,
@@ -1175,7 +1173,6 @@ public class GlowPadView extends View {
 		return square(scaledTapRadius);
 	}
 
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	private void announceTargets() {
 		StringBuilder utterance = new StringBuilder();
 		final int targetCount = mTargetDrawables.size();
@@ -1190,8 +1187,7 @@ public class GlowPadView extends View {
 			}
 		}
 		if (utterance.length() > 0) {
-			if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN)
-				announceForAccessibility(utterance.toString());
+			announceForAccessibility(utterance.toString());
 		}
 	}
 

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
@@ -32,7 +33,9 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -241,7 +244,7 @@ public class GlowPadView extends View {
 				R.styleable.GlowPadView_alwaysTrackFinger, false);
 
 		int pointId = getResourceId(a, R.styleable.GlowPadView_pointDrawable);
-		Drawable pointDrawable = pointId != 0 ? res.getDrawable(pointId) : null;
+		Drawable pointDrawable = pointId != 0 ? getContext().getDrawable(pointId) : null;
 		mGlowRadius = a.getDimension(R.styleable.GlowPadView_glowRadius, 0.0f);
 
 		TypedValue outValue = new TypedValue();
@@ -570,9 +573,15 @@ public class GlowPadView extends View {
 		mTargetAnimations.start();
 	}
 
+	@SuppressLint("MissingPermission")
 	private void vibrate() {
 		if (mVibrator != null) {
-			mVibrator.vibrate(mVibrationDuration);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+				mVibrator.vibrate(VibrationEffect.createOneShot(mVibrationDuration, VibrationEffect.DEFAULT_AMPLITUDE));
+			} else {
+				//vibrate() was deprecated since Android O
+				mVibrator.vibrate(mVibrationDuration);
+			}
 		}
 	}
 
@@ -688,8 +697,13 @@ public class GlowPadView extends View {
 	 */
 	public void setVibrateEnabled(boolean enabled) {
 		if (enabled && mVibrator == null) {
-			mVibrator = (Vibrator) getContext().getSystemService(
-					Context.VIBRATOR_SERVICE);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+				VibratorManager vibratorManager = (VibratorManager) getContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+				mVibrator = vibratorManager.getDefaultVibrator();
+			} else {
+				//VIBRATOR_SERVICE was deprecated since Android S
+				mVibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+			}
 		} else {
 			mVibrator = null;
 		}

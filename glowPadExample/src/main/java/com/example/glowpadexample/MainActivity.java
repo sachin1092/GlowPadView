@@ -9,22 +9,22 @@ import com.fima.glowpadview.GlowPadView.OnTriggerListener;
 
 public class MainActivity extends Activity implements OnTriggerListener {
 
-	private GlowPadView mGlowPadView;
+	private GlowPadView glowPadView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mGlowPadView = findViewById(R.id.glow_pad_view);
+		glowPadView = findViewById(R.id.glow_pad_view);
 
-		mGlowPadView.setOnTriggerListener(this);
-		
+		glowPadView.setOnTriggerListener(this);
+
 		// uncomment this to make sure the glowpad doesn't vibrate on touch
 		// mGlowPadView.setVibrateEnabled(false);
 		
 		// uncomment this to hide targets
-		mGlowPadView.setShowTargetsOnIdle(true);
+		glowPadView.setShowTargetsOnIdle(true);
 	}
 
 	@Override
@@ -34,13 +34,13 @@ public class MainActivity extends Activity implements OnTriggerListener {
 
 	@Override
 	public void onReleased(View v, int handle) {
-		mGlowPadView.ping();
+		glowPadView.ping();
 
 	}
 
 	@Override
 	public void onTrigger(View v, int target) {
-		final int resId = mGlowPadView.getResourceIdForTarget(target);
+		final int resId = glowPadView.getResourceIdForTarget(target);
 		switch (resId) {
 		case R.drawable.ic_item_camera:
 			Toast.makeText(this, "Camera selected", Toast.LENGTH_SHORT).show();

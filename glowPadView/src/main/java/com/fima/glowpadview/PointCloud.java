@@ -20,7 +20,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.util.FloatMath;
 import android.util.Log;
 
 import java.util.ArrayList;

@@ -19,5 +19,4 @@ android {
 
 dependencies {
     implementation project(':glowPadView')
-    //implementation 'com.fima.glowpadview:glowpadview:2.0.0'
 }

@@ -17,7 +17,7 @@ repositories {
 
 ```
 dependencies {
-    implementation 'com.fima.glowpadview:glowpadview:2.0.0'
+    implementation 'com.fima.glowpadview:glowpadview:2.0.1'
 }
 ```
 

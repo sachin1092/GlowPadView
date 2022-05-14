@@ -3,8 +3,20 @@
     xmlns:glowpad="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    
     tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/swipe_here_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/glow_pad_view"
+        android:layout_alignLeft="@+id/glow_pad_view"
+        android:layout_alignRight="@+id/glow_pad_view"
+        android:layout_alignBottom="@+id/glow_pad_view"
+        android:gravity="center"
+        android:text="SWIPE\nHERE"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
     <com.fima.glowpadview.GlowPadView
         android:id="@+id/glow_pad_view"
@@ -19,10 +31,10 @@
         glowpad:directionDescriptions="@array/snooze_dismiss_direction_descriptions"
         glowpad:feedbackCount="1"
         glowpad:glowRadius="@dimen/glowpadview_glow_radius"
-        glowpad:handleDrawable="@drawable/ic_alarm_alert_touch_handle"
+        glowpad:handleDrawable="@drawable/ic_handle"
         glowpad:innerRadius="@dimen/glowpadview_inner_radius"
         glowpad:outerRadius="@dimen/glowpadview_target_placement_radius"
-        glowpad:outerRingDrawable="@drawable/ic_alarm_alert_outerring"
+        glowpad:outerRingDrawable="@drawable/ic_glowpad_outerring"
         glowpad:pointDrawable="@drawable/ic_lockscreen_glowdot"
         glowpad:snapMargin="@dimen/glowpadview_snap_margin"
         glowpad:targetDescriptions="@array/snooze_dismiss_descriptions"

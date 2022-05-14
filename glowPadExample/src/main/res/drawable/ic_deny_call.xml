@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_enabled="true"
+        android:state_active="false"
+        android:state_focused="false">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#00000000"/>
+                    <stroke android:width="0dip"/>
+                    <size android:height="96dip" android:width="96dip"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ic_deny_call_red_64dip"
+                android:top="16dip" android:bottom="16dip"
+                android:left="16dip" android:right="16dip"/>
+        </layer-list>
+    </item>
+
+    <item
+        android:state_enabled="true"
+        android:state_active="true"
+        android:state_focused="false">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#ffffff"/>
+                    <stroke android:width="0dip"/>
+                    <size android:height="96dip" android:width="96dip"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ic_deny_call_red_64dip"
+                android:top="16dip" android:bottom="16dip"
+                android:left="16dip" android:right="16dip"/>
+        </layer-list>
+    </item>
+
+    <item
+        android:state_enabled="true"
+        android:state_active="false"
+        android:state_focused="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#ffffff"/>
+                    <stroke android:width="0dip"/>
+                    <size android:height="96dip" android:width="96dip"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ic_deny_call_red_64dip"
+                android:top="16dip" android:bottom="16dip"
+                android:left="16dip" android:right="16dp"/>
+        </layer-list>
+    </item>
+
+</selector>

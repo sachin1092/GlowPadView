@@ -2,15 +2,15 @@
 <resources>
 
     <array name="snooze_dismiss_drawables">
-        <item>@drawable/ic_item_google</item>
+        <item>@drawable/ic_accept_call</item>
         <item>@null</item>
-        <item>@drawable/ic_item_camera</item>
+        <item>@drawable/ic_deny_call</item>
         <item>@null</item>
     </array>
     <array name="snooze_dismiss_descriptions">
-        <item>dismiss</item>
+        <item>accept</item>
         <item>@null</item>
-        <item>snooze</item>
+        <item>deny</item>
         <item>@null</item>
     </array>
     <array name="snooze_dismiss_direction_descriptions">
